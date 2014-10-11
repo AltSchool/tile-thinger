@@ -12,6 +12,7 @@ for row in [0...rows]
     data[row].push {color: '#ffffff', isColored: false}
 
 board = React.createClass
+
   data: data
 
   getRandomColor: ->
@@ -45,10 +46,10 @@ board = React.createClass
   render: ->
     <div id='board'>
       {for row, rowIndex in data
-        <div className='row'>
+        <div key={'row' + rowIndex} className='row'>
           {for column, columnIndex in row
-            <div className='col-xs-1'>
-              <tile row={rowIndex} column={columnIndex} data={column} onUpdate={@updateBoard} />
+            <div key={'column' + columnIndex}  className='col-xs-1'>
+              <tile key={'tile' + rowIndex + ':' + columnIndex} row={rowIndex} column={columnIndex} data={column} onUpdate={@updateBoard} />
             </div>
           }
         </div>
