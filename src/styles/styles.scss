@@ -2,9 +2,9 @@ $icon-font-path: '~bootstrap-sass-official/assets/fonts/bootstrap/';
 $brand-primary: #8355ff;
 @import "bootstrap-sass-official/assets/stylesheets/bootstrap";
 
-#app {
-  margin-top: 50px;
-}
+// #app {
+//   margin-top: 50px;
+// }
 
 // Scaffolding
 // -------------------------
@@ -32,8 +32,12 @@ footer {
   }
 }
 
+.row {
+  margin-bottom: 5px;
+}
+
 .tile {
-  height: 20px;
-  width: 20px;
+  height: 40px;
+  width: 40px;
   border: 1px solid silver;
 }
