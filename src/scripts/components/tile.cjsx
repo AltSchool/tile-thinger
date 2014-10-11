@@ -3,7 +3,6 @@
 tile = React.createClass
 
   toggleColor: ->
-    console.log @props.row, @props.column
     @props.onUpdate @props.row, @props.column
 
   render: ->
