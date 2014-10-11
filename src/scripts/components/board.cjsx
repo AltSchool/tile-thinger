@@ -12,6 +12,8 @@ for row in [0...rows]
     data[row].push {color: '#ffffff', isColored: false}
 
 board = React.createClass
+  data: data
+
   getRandomColor: ->
     letters = '0123456789ABCDEF'.split('')
     color = '#'

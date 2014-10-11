@@ -16,6 +16,7 @@ Gulp to handle the pipeline flow:
     runSequence = require('run-sequence')
     deployToGithubPages = require('gulp-gh-pages')
     _ = require('lodash')
+    colorsController = require('./controllers/colors')
 
 Webpack to compile the assets:
 
@@ -30,7 +31,9 @@ Session, BodyParser and MongoStore for storing data
 
     bodyParser = require('body-parser')
     session = require('express-session')
-    MongoStore = require('connect-mongo')({ session: session })
+    mongo = require('mongodb')
+    monk = require('monk')
+    db = monk('localhost:27017/colors')
 
 A number of low-level utilities:
 
@@ -219,15 +222,13 @@ Create development assets server and a live reload server
       app.use express.static(path.resolve paths.dist)
       app.use(bodyParser.json())
       app.use(bodyParser.urlencoded({ extended: true }))
-      app.use(session({
-        resave: true,
-        saveUninitialized: true,
-        secret: "THE MOST AMAZING SESSION SECRET",
-        store: new MongoStore({
-          url: 'mongodb://localhost:27017/tiles',
-          auto_reconnect: true
-        })
-      }))
+      app.use((req,res,next) ->
+        req.db = db
+        next()
+      )
+
+      app.use('/', colorsController)
+
       app.listen port, ->
         gutil.log 'HTTP server listening on', port
       {liveReload, app}

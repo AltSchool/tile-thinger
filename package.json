@@ -32,6 +32,8 @@
     "gulp-webpack": "^0.3.0",
     "jsx-loader": "0.11.0",
     "lodash": "^2.4.1",
+    "mongodb": "^1.4.19",
+    "monk": "^0.9.0",
     "run-sequence": "^0.3.6",
     "sass-loader": "^0.2.0",
     "script-loader": "~0.6.0",
@@ -46,7 +48,7 @@
   "license": "MIT",
   "dependencies": {
     "body-parser": "^1.9.0",
-    "connect-mongo": "^0.4.1",
-    "express-session": "^1.8.2"
+    "express-session": "^1.8.2",
+    "superagent": "^0.20.0"
   }
 }
