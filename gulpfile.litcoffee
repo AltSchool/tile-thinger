@@ -26,6 +26,7 @@ Express and LiveReload for a development server:
 
     express = require('express')
     tiny_lr = require('tiny-lr')
+    exphbs  = require('express-handlebars');
 
 Session, BodyParser and MongoStore for storing data
 
@@ -227,6 +228,8 @@ Create development assets server and a live reload server
         next()
       )
 
+      app.engine('.html', exphbs({extname: '.html'}))
+      app.set('view engine', '.html')
       app.use('/', colorsController)
 
       app.listen port, ->

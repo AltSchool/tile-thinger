@@ -21,8 +21,8 @@ router.get('/:id', function(req, res) {
   var collection = db.get('colors');
   var id = req.params.id;
   collection.findOne({_id: id },{},function(e,doc){
-    res.render('/', {
-      "colors" : doc
+    res.render('index', {
+      "colors" : doc, layout: false
     });
   });
 });
