@@ -15,13 +15,9 @@ Otherwise, require React development package:
 **NB**: `__PRODUCTION__` is a variable defined using webpack `DefinePlugin`, it is substituted with its boolean value
 before evaluation. The dead `if ... else` branch is eliminated during minification.
 
-Require jQuery:
-
-    require("script!jquery/dist/jquery.js")
-
 Require app:
 
-    StarterApp = require('./components/StarterApp.coffee')
+    StarterApp = require('./components/home.cjsx')
 
 Render app:
 

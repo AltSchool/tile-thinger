@@ -37,6 +37,7 @@ Process CoffeeScript and JSX.
 
     jsLoaders = ["jsx"]
     scriptModLoaders = [
+      { test: /\.cjsx$/   , loaders: jsLoaders.concat(["coffee"]) }
       { test: /\.coffee$/   , loaders: jsLoaders.concat(["coffee"]) }
       { test: /\.litcoffee$/, loaders: jsLoaders.concat(["coffee?literate"]) }
       { test: /\.js$/       , loaders: jsLoaders }
