@@ -7,12 +7,12 @@ layout = React.createClass
   render: ->
     mainContainer = this.props.containerId if this.props.containerId?
 
-    (<div>
+    <div>
       <navbar data={this.props.data} />
       <div id={mainContainer} className='container'>
         {this.props.children}
       </div>
       <myFooter />
-    </div>)
+    </div>
 
 module.exports = layout
