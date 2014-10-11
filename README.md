@@ -1,12 +1,10 @@
-# Gulp + Webpack (CoffeeScript, Sass, JSX) + React + Bootstrap for Sass
-
-This is a template for a client-side web app compiled using Gulp with Webpack. Bootstrap for Sass and React included.
+# Gulp + Webpack (CoffeeScript, Sass, CJSX) + React + Bootstrap for Sass
 
 ## Running
 
 Clone the repo:
 
-`git clone git@github.com:glebm/gulp-webpack-react-bootstrap-sass-template.git`
+`git clone git@github.com:duereg/tile-thinger.git`
 
 Install dependencies from npm and bower:
 
