@@ -26,6 +26,12 @@ Express and LiveReload for a development server:
     express = require('express')
     tiny_lr = require('tiny-lr')
 
+Session, BodyParser and MongoStore for storing data
+
+    bodyParser = require('body-parser')
+    session = require('express-session')
+    MongoStore = require('connect-mongo')({ session: session })
+
 A number of low-level utilities:
 
     util = require('util')
@@ -211,6 +217,17 @@ Create development assets server and a live reload server
         gutil.log 'LiveReload listening on', lrport
       app = express()
       app.use express.static(path.resolve paths.dist)
+      app.use(bodyParser.json())
+      app.use(bodyParser.urlencoded({ extended: true }))
+      app.use(session({
+        resave: true,
+        saveUninitialized: true,
+        secret: "THE MOST AMAZING SESSION SECRET",
+        store: new MongoStore({
+          url: 'mongodb://localhost:27017/tiles',
+          auto_reconnect: true
+        })
+      }))
       app.listen port, ->
         gutil.log 'HTTP server listening on', port
       {liveReload, app}
