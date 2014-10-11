@@ -1,7 +1,5 @@
 # @cjsx React.DOM
 
-userMenu = require('./userMenu.cjsx')
-
 navBar = React.createClass
   render: ->
     <div className="navbar navbar-default navbar-fixed-top">
@@ -15,7 +13,7 @@ navBar = React.createClass
           </button>
           <a href="/" className="navbar-brand">
             <span className="ion-ios7-stopwatch-outline"></span>
-            Swim Trainer
+            Tile Thinger
           </a>
         </div>
         <div className="collapse navbar-collapse">
@@ -27,7 +25,6 @@ navBar = React.createClass
               <a href="/workouts">Workouts</a>
             </li>
           </ul>
-          <userMenu data={this.props.data} />
         </div>
       </div>
     </div>

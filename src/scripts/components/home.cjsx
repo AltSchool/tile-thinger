@@ -4,12 +4,13 @@ layout = require('./layout.cjsx')
 board = require('./board.cjsx')
 
 home = React.createClass
+  clearBoard: ->
+    @refs.board.clearBoard()
+
   render: ->
     <layout data={this.props} containerId="home" >
-      <h1> Tile Thinger </h1>
-      <p className="lead"></p>
-      <hr />
-      <board />
+      <board ref="board" />
+      <button onClick={@clearBoard}>Clear Board</button>
     </layout>
 
 module.exports = home
