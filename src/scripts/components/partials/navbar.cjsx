@@ -17,14 +17,6 @@ navBar = React.createClass
           </a>
         </div>
         <div className="collapse navbar-collapse">
-          <ul className="nav navbar-nav">
-            <li className={ if this.props.data.title == 'Home' then 'active' else ''}>
-              <a href="/">Home</a>
-            </li>
-            <li className={ if this.props.data.title == 'Workouts' then 'active' else ''}>
-              <a href="/workouts">Workouts</a>
-            </li>
-          </ul>
         </div>
       </div>
     </div>
