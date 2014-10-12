@@ -1,54 +1,35 @@
 # @cjsx React.DOM
 
 tile = require('./tile.cjsx')
+palette = require('./palette.coffee')
 
-data = window.colors
-data ?= []
-rows = 10
-columns = 10
-
-unless window.colors
-  for row in [0...rows]
-    data.push []
-    for column in [0...columns]
-
-      data[row].push {color: '#ffffff', isColored: false}
+data = palette.getColorData()
 
 board = React.createClass
 
   data: data
 
-  getRandomColor: ->
-    letters = '0123456789ABCDEF'.split('')
-    color = '#'
-    for i in [0..5]
-      color += letters[Math.floor(Math.random() * 16)];
-    color
-
   clearBoard: ->
-    for row in data
+    for row in @data
       for column in row
-        column.color = '#ffffff'
+        column.color = palette.BLANK_COLOR
         column.isColored = false
 
     @forceUpdate()
 
   updateBoard: (row, column) ->
-    colorData = data[row][column]
+    currentTile = @data[row][column]
 
-    if colorData.isColored
-      colorData.color = '#ffffff'
-      colorData.isColored = false
+    if currentTile.isColored
+      palette.resetColor currentTile
     else
-      color = @getRandomColor()
-      colorData.color = color
-      colorData.isColored = true
+      palette.makeColorful currentTile
 
     @forceUpdate()
 
   render: ->
     <div id='board'>
-      {for row, rowIndex in data
+      {for row, rowIndex in @data
         <div key={'row' + rowIndex} className='row'>
           {for column, columnIndex in row
             <div key={'column' + columnIndex}  className='col-xs-1'>

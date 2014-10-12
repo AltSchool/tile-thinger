@@ -220,18 +220,17 @@ Create development assets server and a live reload server
       liveReload.listen lrport, ->
         gutil.log 'LiveReload listening on', lrport
       app = express()
-      app.use express.static(path.resolve paths.dist)
       app.use(bodyParser.json())
       app.use(bodyParser.urlencoded({ extended: true }))
       app.use((req,res,next) ->
         req.db = db
         next()
       )
-
+      app.use('/', colorsController)
+      app.use express.static(path.resolve paths.dist)
       app.engine('html', exphbs({extname: '.html'}))
       app.set('view engine', 'html')
       app.set('views', __dirname + '/dist');
-      app.use('/', colorsController)
 
       app.listen port, ->
         gutil.log 'HTTP server listening on', port
