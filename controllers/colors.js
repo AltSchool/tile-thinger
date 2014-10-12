@@ -8,7 +8,6 @@ var handleUpdate = function(res) {
       res.status(500).send("There was a problem adding the information to the database.");
     }
     else {
-      res.location('/' + doc._id);
       res.status(200).send(doc);
     }
   }
@@ -21,8 +20,8 @@ router.get('/:id', function(req, res) {
   var collection = db.get('colors');
   var id = req.params.id;
   collection.findOne({_id: id },{},function(e,doc){
-    res.render('index', {
-      "colors" : doc, layout: false
+    res.render('index.html', {
+      "colors" : JSON.stringify(doc.colors), layout: false, id: id
     });
   });
 });
@@ -35,11 +34,11 @@ router.post('/colors', function(req, res) {
   var collection = db.get('colors');
 
   if(req.body.id) {
-    collection.save({_id: req.body.id, colors: colors}, handleUpdate(res));
+    collection.updateById(req.body.id, {colors: colors}, handleUpdate(res));
+  } else {
+    // Submit to the DB
+    collection.insert({ colors: colors }, handleUpdate(res));
   }
-
-  // Submit to the DB
-  collection.insert({ colors: colors }, handleUpdate(res));
 });
 
 module.exports = router;

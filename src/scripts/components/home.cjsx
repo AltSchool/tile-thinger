@@ -5,6 +5,8 @@ board = require('./board.cjsx')
 superagent = require('superagent')
 
 home = React.createClass
+  id: window.id
+
   clearBoard: ->
     @refs.board.clearBoard()
 

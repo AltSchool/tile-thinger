@@ -228,8 +228,9 @@ Create development assets server and a live reload server
         next()
       )
 
-      app.engine('.html', exphbs({extname: '.html'}))
-      app.set('view engine', '.html')
+      app.engine('html', exphbs({extname: '.html'}))
+      app.set('view engine', 'html')
+      app.set('views', __dirname + '/dist');
       app.use('/', colorsController)
 
       app.listen port, ->

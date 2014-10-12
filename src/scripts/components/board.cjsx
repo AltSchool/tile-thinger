@@ -2,14 +2,17 @@
 
 tile = require('./tile.cjsx')
 
-data = []
+data = window.colors
+data ?= []
 rows = 10
 columns = 10
 
-for row in [0...rows]
-  data.push []
-  for column in [0...columns]
-    data[row].push {color: '#ffffff', isColored: false}
+unless window.colors
+  for row in [0...rows]
+    data.push []
+    for column in [0...columns]
+
+      data[row].push {color: '#ffffff', isColored: false}
 
 board = React.createClass
 
