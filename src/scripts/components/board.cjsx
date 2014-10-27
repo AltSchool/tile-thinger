@@ -13,7 +13,7 @@ board = React.createClass
     for row in @data
       for column in row
         column.color = palette.BLANK_COLOR
-        column.isColored = false
+        column.isColored = false # QUESTION: What's another way that you could have `isColored` without setting it yourself. Also, is it used anywhere?
 
     @forceUpdate()
 

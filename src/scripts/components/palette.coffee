@@ -26,7 +26,7 @@ module.exports =
 
   resetColor: (tile) ->
     tile.color = BLANK_COLOR
-    tile.isColored = false
+    tile.isColored = false # QUESTION: `isColored` seems like it could be a function within `tile` as well. When it's not blank (Ember.alias in React?)
 
   makeColorful: (tile) ->
     color = getRandomColor()
