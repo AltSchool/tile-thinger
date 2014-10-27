@@ -5,7 +5,7 @@ board = require('./board.cjsx')
 superagent = require('superagent')
 
 home = React.createClass
-  id: window.id
+  id: window.id # QUESTION: Where is this coming from?
 
   clearBoard: ->
     @refs.board.clearBoard()
