@@ -18,6 +18,7 @@ getRandomColor = -> # QUESTION: Why didn'tinclude this function in your `module.
     color += letters[Math.floor(Math.random() * 16)];
   color
 
+# QUESTION: Why have palette at all? Couldn't this be included in tile?
 module.exports =
   BLANK_COLOR: BLANK_COLOR
 
