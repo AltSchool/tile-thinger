@@ -1,4 +1,4 @@
-data = window.colors
+data = window.colors # QUESTION: What's going on here?
 data ?= []
 rows = 10
 columns = 10
