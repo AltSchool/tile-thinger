@@ -21,7 +21,7 @@ getRandomColor = ->
 module.exports =
   BLANK_COLOR: BLANK_COLOR
 
-  getColorData : -> data
+  getColorData : -> data # QUESTION: What happens when we create a new instance of this board? (Clear... etc) as this is a local variable)
 
   resetColor: (tile) ->
     tile.color = BLANK_COLOR
